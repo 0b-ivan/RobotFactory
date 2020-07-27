@@ -14,7 +14,7 @@ class SensorMod {
 public:
     virtual void operator()() = 0;
     virtual ~SensorMod() = default;
-    //virtual double scan() = 0;
+    //virtual void scan() = 0;
 };
 
 //Kontext
