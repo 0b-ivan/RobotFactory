@@ -27,8 +27,10 @@ public:
     Robot() : driveMod_(nullptr),sensorMod_(nullptr) {}
     void setDriveMod(std::unique_ptr<DriveMod> driveMod) {driveMod_ = std::move(driveMod);}
     void setSensorMod(std::unique_ptr<SensorMod> sensorMod) {sensorMod_ = std::move(sensorMod);}
-    void getDriveMod() { if (driveMod_) (*driveMod_)(); }
-    void getSensorMod() { if (sensorMod_) (*sensorMod_)(); }
+    //void getDriveMod() { if (driveMod_) (*driveMod_)(); }
+    //void getSensorMod() { if (sensorMod_) (*sensorMod_)(); }
+    void getDriveMod() { this->drive(); }
+    //void getSensorMod() { if (sensorMod_) (*sensorMod_)(); }
     void drive();
     void scan();
 
@@ -85,17 +87,17 @@ int main() {
     Scanner.setDriveMod( std::unique_ptr<DriveMod>(new NoMotion) );
     Scanner.setSensorMod( std::unique_ptr<SensorMod>(new Low) );
     Scanner.getDriveMod();
-    Scanner.getSensorMod();
+   // Scanner.getSensorMod();
    //Scanner.drive();
 
     Supplier.setDriveMod( std::unique_ptr<DriveMod>(new HighSpeed) );
     Supplier.setSensorMod( std::unique_ptr<SensorMod>(new Average) );
     Supplier.getDriveMod();
-    Supplier.getSensorMod();
+    //Supplier.getSensorMod();
 
     Explorer.setDriveMod( std::unique_ptr<DriveMod>(new AverageSpeed) );
     Explorer.setSensorMod( std::unique_ptr<SensorMod>(new Sensitive) );
     Explorer.getDriveMod();
-    Explorer.getSensorMod();
+    //Explorer.getSensorMod();
 
 }
