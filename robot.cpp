@@ -1,26 +1,20 @@
-//
-// Created by Ivan Babayev on 25.07.20.
-//
-
-//
-// g++ -std=c++11 strategy.cpp -o strategy
-//
 #include <iostream>
 #include <memory>
 
 //Drive Interface
 class DriveMod {
 public:
-    virtual void operator()() = 0;
+    //virtual void operator()() = 0;
     virtual ~DriveMod() = default;
-    //virtual double scan() = 0;
+    virtual void drive() = 0;
+
 };
 //Scan Interface
 class SensorMod {
 public:
     virtual void operator()() = 0;
     virtual ~SensorMod() = default;
-    //virtual double drive() = 0;
+    //virtual double scan() = 0;
 };
 
 //Kontext
@@ -28,78 +22,41 @@ class Robot {
     std::unique_ptr<SensorMod> sensorMod_;
     std::unique_ptr<DriveMod> driveMod_;
 
-private:
-    double speed = 1.1; //km/h
-    long scanRange = 10000; //cm
-    int scanInterval = 10; //sec
-
 
 public:
     Robot() : driveMod_(nullptr),sensorMod_(nullptr) {}
-    void setDriveMod(std::unique_ptr<DriveMod> driveMod) {
-        driveMod_ = std::move(driveMod);
-    }
-    void setSensorMod(std::unique_ptr<SensorMod> sensorMod) {
-        sensorMod_ = std::move(sensorMod);
-    }
+    void setDriveMod(std::unique_ptr<DriveMod> driveMod) {driveMod_ = std::move(driveMod);}
+    void setSensorMod(std::unique_ptr<SensorMod> sensorMod) {sensorMod_ = std::move(sensorMod);}
     void getDriveMod() { if (driveMod_) (*driveMod_)(); }
     void getSensorMod() { if (sensorMod_) (*sensorMod_)(); }
-    void drive(){};
-    void scan(){};
+    void drive();
+    void scan();
+
 };
 
 //Drivemod(Strategie)
 class HighSpeed : public DriveMod {
 public:
-    void operator()() override {
-        std::cout << "Reisegeschwindigkeit\n";
-        drive();
-    }
-
-private:
-   double drive()
-    {
-        return 15.0;
-    }
-
+    //void operator()() override {}
+    void drive(){std::cout << "Reisegeschwindigkeit\n";}
 };
 
 class AverageSpeed : public DriveMod {
 public:
-    void operator()() override {
-        std::cout << "Bewegungsgeschwindigkeit\n";
-
-    }
-private:
-    double drive()
-    {
-        return 7.5;
-    }
+    //void operator()() override {}
+    void drive(){std::cout << "Bewegungsgeschwindigkeit\n";}
 };
 
 class Slowspeed : public DriveMod {
 public:
-    void operator()() override {
-        std::cout << "Schrittgeschwindigkeit\n";
-        drive();
-    }
-private:
-    double drive()
-    {
-        return 3.0;
-    }
+    //void operator()() override {}
+    void drive(){std::cout << "Schrittgeschwindigkeit\n";}
+
 };
 class NoMotion : public DriveMod {
 public:
-    void operator()() override {
-        std::cout << "Unbeweglich\n";
-    }
-
-private:
-    double drive()
-    {
-        return 0.0;
-    }
+    //void operator()() override {drive();}
+    void drive() override {std::cout << "Unbeweglich\n";}
 };
 
 //SensorMods(Strategie)
@@ -129,6 +86,7 @@ int main() {
     Scanner.setSensorMod( std::unique_ptr<SensorMod>(new Low) );
     Scanner.getDriveMod();
     Scanner.getSensorMod();
+   //Scanner.drive();
 
     Supplier.setDriveMod( std::unique_ptr<DriveMod>(new HighSpeed) );
     Supplier.setSensorMod( std::unique_ptr<SensorMod>(new Average) );

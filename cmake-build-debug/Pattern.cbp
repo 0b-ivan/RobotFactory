@@ -80,9 +80,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/ivanbabayev/Documents/Uni/Semester III/ProgIII/Pattern/main.cpp">
-			<Option target="Pattern"/>
-		</Unit>
 		<Unit filename="/Users/ivanbabayev/Documents/Uni/Semester III/ProgIII/Pattern/robot.cpp">
 			<Option target="Pattern"/>
 		</Unit>

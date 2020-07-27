@@ -3,4 +3,4 @@ project(Pattern)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Pattern main.cpp robot.cpp robot.h)
+add_executable(Pattern robot.cpp robot.h)

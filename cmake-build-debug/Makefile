@@ -123,33 +123,6 @@ Pattern/fast:
 	$(MAKE) -f CMakeFiles/Pattern.dir/build.make CMakeFiles/Pattern.dir/build
 .PHONY : Pattern/fast
 
-main.o: main.cpp.o
-
-.PHONY : main.o
-
-# target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/Pattern.dir/build.make CMakeFiles/Pattern.dir/main.cpp.o
-.PHONY : main.cpp.o
-
-main.i: main.cpp.i
-
-.PHONY : main.i
-
-# target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/Pattern.dir/build.make CMakeFiles/Pattern.dir/main.cpp.i
-.PHONY : main.cpp.i
-
-main.s: main.cpp.s
-
-.PHONY : main.s
-
-# target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/Pattern.dir/build.make CMakeFiles/Pattern.dir/main.cpp.s
-.PHONY : main.cpp.s
-
 robot.o: robot.cpp.o
 
 .PHONY : robot.o
@@ -186,9 +159,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Pattern"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
 	@echo "... robot.o"
 	@echo "... robot.i"
 	@echo "... robot.s"

@@ -1,5 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Pattern.dir/main.cpp.o"
   "CMakeFiles/Pattern.dir/robot.cpp.o"
   "Pattern"
   "Pattern.pdb"
